@@ -218,7 +218,6 @@ function(add_qt)
 		INTERFACE_COMPILE_DEFINITIONS QT_NETWORK_LIB
 	)
 	add_dependencies(RuBackup::QtNetwork qt5_ext)
-	fix_qt()
 endfunction()
 
 function(create_qt_include_dir ROOT_DIR DIR_PATH INC_DIR)

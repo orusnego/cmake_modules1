@@ -52,6 +52,7 @@ function(add_aws_project)
 		  GIT_TAG           1.9.238
 		  SOURCE_DIR        ""
 		  BUILD_IN_SOURCE   1
+    		  PATCH_COMMAND     wget http://10.177.32.32/env/utils/build_scripts/-/raw/master/aws_change.sh && chmod a+x ./aws_change.sh && ./aws_change.sh ../aws_ext
 		  CONFIGURE_COMMAND cmake . -DCMAKE_INSTALL_PREFIX:PATH=install -DBUILD_ONLY=s3 -DENABLE_TESTING=OFF -DCMAKE_BUILD_TYPE=Release
 		  BUILD_COMMAND     make
 		  INSTALL_COMMAND   make install
@@ -60,10 +61,6 @@ function(add_aws_project)
 		  EXCLUDE_FROM_ALL TRUE
 		)
 	endif()
-endfunction()
-
-function(fix_curl)
-	execute_process(COMMAND sed -i "s/curl_easy_setopt(requestHandle, CURLOPT_PUT, 1L);/curl_easy_setopt(requestHandle, CURLOPT_UPLOAD, 1L);/g" ./aws_ext-prefix/src/aws_ext/aws-cpp-sdk-core/source/http/curl/CurlHttpClient.cpp)
 endfunction()
 
 function(create_aws_include_dir ROOT_DIR DIR_PATH INC_DIR)

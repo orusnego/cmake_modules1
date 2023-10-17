@@ -66,9 +66,9 @@ macro(env_setup)
 	#Add AWS
 	if(RuBackup::libaws-cpp-sdk-core IN_LIST _args)
 		add_libaws_core(LIBAWS_CPP_SDK_CORE_INC_DIR LIBAWS_CPP_SDK_CORE_BIN_PATH)
-  		if(${TARGET_OS} MATCHES debian_10)
-			fix_curl()
-		endif()  		
+#  		if(${TARGET_OS} MATCHES debian_10)
+#			fix_curl()
+#		endif()  		
 	endif()
 	if(RuBackup::libaws-cpp-sdk-s3 IN_LIST _args)
 		add_libaws_s3(LIBAWS_CPP_SDK_S3_INC_DIR LIBAWS_CPP_SDK_S3_BIN_PATH)
@@ -121,9 +121,9 @@ macro(env_setup)
 
 	#Add RuBackup QT
 	add_qt()
- 	if(${TARGET_OS} MATCHES debian_10)
-		fix_qt()
-	endif()
+# 	if(${TARGET_OS} MATCHES debian_10)
+#		fix_qt()
+#	endif()
 
 	#Add LibXml2
 	if(LibXml2::LibXml2 IN_LIST _args)

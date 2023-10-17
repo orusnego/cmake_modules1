@@ -46,33 +46,18 @@ endfunction()
 
 function(add_aws_project)
 	if(NOT TARGET aws_ext)
- 		if (${TARGET_OS} MATCHES debian_10)
-			ExternalProject_Add(aws_ext
-			  GIT_REPOSITORY    https://github.com/aws/aws-sdk-cpp.git
-			  GIT_TAG           1.10.53
-			  SOURCE_DIR        ""
-			  BUILD_IN_SOURCE   1
-			  CONFIGURE_COMMAND cmake . -DCMAKE_INSTALL_PREFIX:PATH=install -DBUILD_ONLY=s3 -DENABLE_TESTING=OFF -DCMAKE_BUILD_TYPE=Release
-			  BUILD_COMMAND     make
-			  INSTALL_COMMAND   make install
-			  TEST_COMMAND      ""
-			  UPDATE_COMMAND    ""
-			  EXCLUDE_FROM_ALL TRUE
-			)
-     		else()
-       			ExternalProject_Add(aws_ext
-			  GIT_REPOSITORY    https://github.com/aws/aws-sdk-cpp.git
-			  GIT_TAG           1.9.238
-			  SOURCE_DIR        ""
-			  BUILD_IN_SOURCE   1
-			  CONFIGURE_COMMAND cmake . -DCMAKE_INSTALL_PREFIX:PATH=install -DBUILD_ONLY=s3 -DENABLE_TESTING=OFF -DCMAKE_BUILD_TYPE=Release
-			  BUILD_COMMAND     make
-			  INSTALL_COMMAND   make install
-			  TEST_COMMAND      ""
-			  UPDATE_COMMAND    ""
-			  EXCLUDE_FROM_ALL TRUE
-			)
-   		endif()
+		ExternalProject_Add(aws_ext
+		  GIT_REPOSITORY    https://github.com/aws/aws-sdk-cpp.git
+		  GIT_TAG           1.10.53
+		  SOURCE_DIR        ""
+		  BUILD_IN_SOURCE   1
+		  CONFIGURE_COMMAND cmake . -DCMAKE_INSTALL_PREFIX:PATH=install -DBUILD_ONLY=s3 -DENABLE_TESTING=OFF -DCMAKE_BUILD_TYPE=Release
+		  BUILD_COMMAND     make
+		  INSTALL_COMMAND   make install
+		  TEST_COMMAND      ""
+		  UPDATE_COMMAND    ""
+		  EXCLUDE_FROM_ALL TRUE
+		)
 	endif()
 endfunction()
 

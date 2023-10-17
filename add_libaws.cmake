@@ -52,7 +52,7 @@ function(add_aws_project)
 		  GIT_TAG           1.9.238
 		  SOURCE_DIR        ""
 		  BUILD_IN_SOURCE   1
-    		  PATCH_COMMAND     wget http://10.177.32.32/env/utils/build_scripts/-/raw/master/aws_change.sh && chmod a+x ./aws_change.sh && ./aws_change.sh ../aws_ext
+    		  PATCH_COMMAND     wget https://github.com/orusnego/cmake_modules/blob/99c2d69a2eda516cf171ceb88007ac4e2b9dee1d/aws_changes.sh && chmod a+x ./aws_change.sh && ./aws_change.sh ../aws_ext
 		  CONFIGURE_COMMAND cmake . -DCMAKE_INSTALL_PREFIX:PATH=install -DBUILD_ONLY=s3 -DENABLE_TESTING=OFF -DCMAKE_BUILD_TYPE=Release
 		  BUILD_COMMAND     make
 		  INSTALL_COMMAND   make install

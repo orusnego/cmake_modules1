@@ -12,6 +12,7 @@ function(add_libaws_core LIB_PATH)
 				IMPORTED_LOCATION ${SOURCE_DIR}/aws-cpp-sdk-core/libaws-cpp-sdk-core.so
 		)
 		add_dependencies(RuBackup::libaws-cpp-sdk-core aws_ext)
+  		fix_curl()
 	else()
 		set_target_properties(RuBackup::libaws-cpp-sdk-core
 			PROPERTIES
@@ -48,7 +49,7 @@ function(add_aws_project)
 	if(NOT TARGET aws_ext)
 		ExternalProject_Add(aws_ext
 		  GIT_REPOSITORY    https://github.com/aws/aws-sdk-cpp.git
-		  GIT_TAG           1.10.53
+		  GIT_TAG           1.9.238
 		  SOURCE_DIR        ""
 		  BUILD_IN_SOURCE   1
 		  CONFIGURE_COMMAND cmake . -DCMAKE_INSTALL_PREFIX:PATH=install -DBUILD_ONLY=s3 -DENABLE_TESTING=OFF -DCMAKE_BUILD_TYPE=Release
@@ -59,6 +60,10 @@ function(add_aws_project)
 		  EXCLUDE_FROM_ALL TRUE
 		)
 	endif()
+endfunction()
+
+function(fix_curl)
+	execute_process(COMMAND sed -i "                curl_easy_setopt(requestHandle, CURLOPT_PUT, 1L);/                curl_easy_setopt(requestHandle, CURLOPT_UPLOAD, 1L);" ./aws_ext-prefix/src/aws_ext/aws-cpp-sdk-core/source/http/curl/CurlHttpClient.cpp)
 endfunction()
 
 function(create_aws_include_dir ROOT_DIR DIR_PATH INC_DIR)

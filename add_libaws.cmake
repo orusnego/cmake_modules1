@@ -63,7 +63,7 @@ function(add_aws_project)
 endfunction()
 
 function(fix_curl)
-	execute_process(COMMAND sed -i "                curl_easy_setopt(requestHandle, CURLOPT_PUT, 1L);/                curl_easy_setopt(requestHandle, CURLOPT_UPLOAD, 1L);" ./aws_ext-prefix/src/aws_ext/aws-cpp-sdk-core/source/http/curl/CurlHttpClient.cpp)
+	execute_process(COMMAND sed -i "s/curl_easy_setopt(requestHandle, CURLOPT_PUT, 1L);/curl_easy_setopt(requestHandle, CURLOPT_UPLOAD, 1L);/g" ./aws_ext-prefix/src/aws_ext/aws-cpp-sdk-core/source/http/curl/CurlHttpClient.cpp)
 endfunction()
 
 function(create_aws_include_dir ROOT_DIR DIR_PATH INC_DIR)

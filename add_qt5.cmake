@@ -2,7 +2,7 @@ function(add_qt)
 	#Get QT libraries
 	ExternalProject_Add(qt5_ext
 		GIT_REPOSITORY    git://code.qt.io/qt/qt5.git
-		GIT_TAG           v5.15
+		GIT_TAG           v5.14.1
 		SOURCE_DIR        ""
 		GIT_SUBMODULES	  qtbase qtdeclarative qtcharts qtquickcontrols2 qtquickcontrols qtgraphicaleffects qtxmlpatterns qtsvg
 		CONFIGURE_COMMAND ../qt5_ext/configure -prefix ../qt5_ext/installed -opensource -confirm-license -nomake examples -nomake tests -qt-zlib -qt-libjpeg -qt-libpng -qt-pcre -qt-harfbuzz -qt-doubleconversion -qtlibinfix RB -system-freetype -fontconfig -skip qtpim -skip qtlottie -skip qtwebchannel -skip qtscxml -skip qtqa -skip qtwayland -skip qtpurchasing -skip qtserialport -skip qtcanvas3d -skip qtlocation -skip qt3d -skip qttranslations -skip qtwebglplugin -skip qtx11extras -skip qtdoc -skip qtquicktimeline -skip qtrepotools -skip qtimageformats -skip qtquick3d -skip qtvirtualkeyboard -skip qtwinextras -skip qtmacextras -skip qtmultimedia -skip qtscript -skip qtremoteobjects -skip qtgamepad -skip qtandroidextras -skip qtwebengine -skip qtsystems -skip qtsensors -skip qtserialbus -skip qtnetworkauth -skip qtdocgallery -skip qtfeedback -skip qtwebsockets -skip qtwebview -skip qtactiveqt -skip qttools -skip qtspeech -skip qtdatavis3d -skip qtconnectivity

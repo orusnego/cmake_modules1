@@ -227,7 +227,7 @@ function(create_qt_include_dir ROOT_DIR DIR_PATH INC_DIR)
 	set(${INC_DIR} ${ROOT_DIR}/${DIR_PATH} PARENT_SCOPE)
 endfunction()
 
-function fix_qt()
+function(fix_qt)
 	execute_process(COMMAND sed '47i\#include <limits>' ./qt5_ext-prefix/src/qt5_ext/qtbase/src/corelib/global/qfloat16.h)
 	execute_process(COMMAND sed '50i\#include <limits>' ./qt5_ext-prefix/src/qt5_ext/qtbase/src/corelib/global/qendian.h)
  	execute_process(COMMAND sed '44i\#include <limits>' ./qt5_ext-prefix/src/qt5_ext/qtbase/src/corelib/text/qbytearraymatcher.h)

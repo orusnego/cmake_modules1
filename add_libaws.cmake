@@ -12,7 +12,6 @@ function(add_libaws_core LIB_PATH)
 				IMPORTED_LOCATION ${SOURCE_DIR}/aws-cpp-sdk-core/libaws-cpp-sdk-core.so
 		)
 		add_dependencies(RuBackup::libaws-cpp-sdk-core aws_ext)
-  		fix_curl()
 	else()
 		set_target_properties(RuBackup::libaws-cpp-sdk-core
 			PROPERTIES
